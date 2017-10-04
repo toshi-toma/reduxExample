@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product form './Product'
+import Products from './Products'
 
 const Cart = ( {products, total, onCheckoutClicked }) => {
     const hasProducts = products.length > 0
     const nodes = hasProducts ? (
         products.map(product =>
-            <Product
+            <Products
                 title={product.title}
                 price={product.price}
                 quantity={product.quantity}

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Product from './Product'
+import Product from './Products'
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
   <div style={{ marginBottom: 20 }}>

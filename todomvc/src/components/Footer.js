@@ -10,11 +10,11 @@ const FILTER_TITLES = {
 }
 
 export default class Footer extends Component {
-    static PropTypes = {
+    static propTypes = {
         completedCount: PropTypes.number.isRequired,
         activeCount: PropTypes.number.isRequired,
         filter: PropTypes.string.isRequired,
-        inClearCompleted: PropTypes.func.isRequired,
+        onClearCompleted: PropTypes.func.isRequired,
         onShow: PropTypes.func.isRequired
     }
 
@@ -24,45 +24,45 @@ export default class Footer extends Component {
 
         return (
             <span className="todo-count">
-                <strong>{activeCount || 'No'}</strong> {itemWord} left
-            </span>
+        <strong>{activeCount || 'No'}</strong> {itemWord} left
+      </span>
         )
     }
 
-    renderFileterLink(filter) {
+    renderFilterLink(filter) {
         const title = FILTER_TITLES[filter]
         const { filter: selectedFilter, onShow } = this.props
 
         return (
             <a className={classnames({ selected: filter === selectedFilter })}
-                style={{ cursor: 'pointer' }}
-                onClick={() => onShow(filter) }>
+               style={{ cursor: 'pointer' }}
+               onClick={() => onShow(filter)}>
                 {title}
             </a>
         )
     }
-    
+
     renderClearButton() {
         const { completedCount, onClearCompleted } = this.props
         if (completedCount > 0) {
             return (
                 <button className="clear-completed"
-                    onClick={onClearCompleted} >
+                        onClick={onClearCompleted} >
                     Clear completed
                 </button>
             )
         }
     }
 
-    render () {
+    render() {
         return (
-            <footer clasName="footer">
+            <footer className="footer">
                 {this.renderTodoCount()}
                 <ul className="filters">
-                    {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
-                    <li key={filter}>
-                        {this.renderFileterLink(filter)}
-                    </li>    
+                    {[ SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED ].map(filter =>
+                        <li key={filter}>
+                            {this.renderFilterLink(filter)}
+                        </li>
                     )}
                 </ul>
                 {this.renderClearButton()}

@@ -13,7 +13,7 @@ export default class Header extends Component {
         }
     }
 
-    header() {
+    render() {
         return (
             <header className="header">
                 <h1>todos</h1>

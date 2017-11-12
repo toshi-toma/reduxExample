@@ -7,8 +7,8 @@ import App from './App'
 import UserPage from './UserPage'
 import RepoPage from './RepoPage'
 
-const Root = ({ store }) => {
-    <Provider store = {store} >
+const Root = ({ store }) => (
+    <Provider store={store}>
         <div>
             <Route path="/" component={App} />
             <Route path="/:login/:name"
@@ -18,7 +18,7 @@ const Root = ({ store }) => {
             <DevTools />
         </div>
     </Provider>
-}
+)
 
 Root.propTypes = {
     store: PropTypes.object.isRequired,

@@ -20,7 +20,6 @@ const API_ROOT = 'https://api.github.com/'
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-
 const callApi = (endpoint, schema) => {
     const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
@@ -32,7 +31,7 @@ const callApi = (endpoint, schema) => {
                 }
 
                 const camelizedJson = camelizeKeys(json)
-                const nextPageUrl = getNextPageUrl(json)
+                const nextPageUrl = getNextPageUrl(response)
 
                 return Object.assign({},
                     normalize(camelizedJson, schema),
@@ -94,15 +93,12 @@ export default store => next => action => {
     if (typeof endpoint !== 'string') {
         throw new Error('Specify a string endpoint URL.')
     }
-
     if (!schema) {
         throw new Error('Specify one of the exported Schemas.')
     }
-
     if (!Array.isArray(types) || types.length !== 3) {
         throw new Error('Expected an array of three action types.')
     }
-
     if (!types.every(type => typeof type === 'string')) {
         throw new Error('Expected action types to be strings.')
     }
@@ -114,7 +110,7 @@ export default store => next => action => {
     }
 
     const [ requestType, successType, failureType ] = types
-    next(actionWith({ type: requestType}))
+    next(actionWith({ type: requestType }))
 
     return callApi(endpoint, schema).then(
         response => next(actionWith({

@@ -59,7 +59,7 @@ export const STARRED_FAILURE = 'STARRED_FAILURE'
 const fetchStarred = (login, nextPageUrl) => ({
     login,
     [CALL_API]: {
-        type: [ STARRED_REQUEST, STARRED_SUCCESS, STARRED_FAILURE ],
+        types: [ STARRED_REQUEST, STARRED_SUCCESS, STARRED_FAILURE ],
         endpoint: nextPageUrl,
         schema: Schemas.REPO_ARRAY
     }

@@ -1,4 +1,34 @@
 # real-world
+# 構成
+- public/
+    - index.html
+- src/
+    - actions/
+        - index.js
+    - components/
+        - Explore.js
+        - List.js
+        - Repo.js
+        - User.js
+    - containers/
+        - App.js
+        - DevTools.js
+        - RepoPage.js
+        - Root.dev.js
+        - Root.js
+        - Root.prod.js
+        - UserPage.js
+    - middleware/
+        - api.js
+    - reducers/
+        - index.js
+        - paginate.js
+    - store/
+        - configureStore.dev.js
+        - configureStore.js
+        - configureStore.prod.js
+    - index.js
+- package.json
 
 # Action(actions/index.js)
 Actionは、アプリケーションからStoreにデータを送る情報のペイロード
